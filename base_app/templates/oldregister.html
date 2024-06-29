@@ -1,0 +1,358 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/images/favicon/apple-icon-57x57.png'%}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/images/favicon/apple-icon-60x60.png'%}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/images/favicon/apple-icon-72x72.png'%}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/images/favicon/apple-icon-76x76.png'%}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/images/favicon/apple-icon-114x114.png'%}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/images/favicon/apple-icon-120x120.png'%}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/images/favicon/apple-icon-144x144.png'%}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/images/favicon/apple-icon-152x152.png'%}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/favicon/apple-icon-180x180.png'%}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'assets/images/favicon/android-icon-192x192.png'%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicon/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/images/favicon/favicon-96x96.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon/favicon-16x16.png'%}">
+    <link rel="manifest" href="{% static 'assets/images/favicon/manifest.json'%}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>CONTACT</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/mobile.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css'%}">
+</head>
+
+<body>
+
+    {% include 'header.html' %}
+    <!-- BANNER SECTION START -->
+    <section class="sub-banner-main-section register-banner w-100 float-left">
+        <div class="container  bg-none">
+            <div class="sub-banner-inner-con">
+                <h3 data-aos="fade-up" data-aos-duration="700">NEW CUSTOMER? REGISTER HERE</h3>
+                <p data-aos="fade-up" data-aos-duration="700"> For new customers fill the form below according to how you want to engage with the system and enjoy the service!
+                    </p>
+                <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-duration="700">
+                    <ol class="breadcrumb d-inline-block mb-0">
+                        <li class="breadcrumb-item d-inline-block"><a href="index.html">HOME</a></li>
+                        <li class="breadcrumb-item active d-inline-block" aria-current="page">REGISTER</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <!-- BANNER SECTION END -->
+ <!-- mfano wa main container -->
+ <div class ="row justify-content-center">
+            <div class ="col-sm-6-col-md-4 col-lg-4"><meta name="viewport" content="width=device-width, initial-scale=1">
+                <style>
+                body {
+                  font-family: Arial, Helvetica, sans-serif;
+                  background-color: rgb(249, 249, 250);
+                }
+                
+                * {
+                  box-sizing: border-box;
+                }
+                
+                /* Add padding to containers */
+                .container {
+                  padding: 16px;
+                  background-color: white;
+                }
+                
+                /* Full-width input fields */
+                input[type=text], input[type=password] {
+                  width: 100%;
+                  padding: 15px;
+                  margin: 5px 0 22px 0;
+                  display: inline-block;
+                  border: none;
+                  background: #f1f1f1;
+                }
+                
+                input[type=text]:focus, input[type=password]:focus {
+                  background-color: #ddd;
+                  outline: none;
+                }
+                
+                /* Overwrite default styles of hr */
+                hr {
+                  border: 1px solid #f1f1f1;
+                  margin-bottom: 25px;
+                }
+                
+                /* Set a style for the submit button */
+                .registerbtn {
+                  background-color: #04AA6D;
+                  color: white;
+                  padding: 16px 20px;
+                  margin: 8px 0;
+                  border: none;
+                  cursor: pointer;
+                  width: 100%;
+                  opacity: 0.9;
+                }
+                
+                .registerbtn:hover {
+                  opacity: 1;
+                }
+                
+                /* Add a blue text color to links */
+                a {
+                  color: rgb(231, 233, 234);
+                }
+                
+                /* Set a grey background color and center the text of the "sign in" section */
+                .signin {
+                  background-color: #f1f1f1;
+                  text-align: center;
+                }
+                </style>
+                </head>
+                <body>
+                    <div class="card p-4">
+                       <b>CHOOSE THE "PARTICIPANT" BUTTON TO REGISTER AS A PARTICIPANT AND "EVENT ORGANIZER" TO REGISTER AS EVENT ORGANIZER</b> 
+                    <p class="text-center">
+                        <button class="btn btn-primary" onclick="toggleForms(this)" fy="#part" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                          PARTICIPANT
+                        </button>
+                        <button class="btn btn-primary"  onclick="toggleForms(this)" fy="#org" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            EVENT ORGANIZER
+                          </button>
+                      </p>
+                      </div>
+                      <!-- <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                      </div> -->
+                
+                <form id="part" class="forms fade-up" data-aos="fade-up" data-aos-duration="600" action="/action_page.php" style="display: none;">
+                  <div class="container">
+                    <h1>Register</h1>
+                    <p>Please fill this form to create an account.</p>
+                    <hr>
+
+                    <label for="First_name"><b>First name</b></label>
+                    <input type="text" placeholder="Enter First name" name="First_name" id="First_name" required>
+
+                    <label for="Last_name"><b>Last name</b></label>
+                    <input type="text" placeholder="Enter Last name" name="Last_name" id="Last_name" required>
+                
+                
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+                    <label for="phn"><b>Phone number</b></label>
+                    <input type="text" placeholder="Enter Phone number" name="phn" id="phn" required>
+                
+                
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                
+                    <label for="psw-repeat"><b>Repeat Password</b></label>
+                    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+                    <hr>
+                    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                
+                    <button type="submit" class="registerbtn">Register</button>
+                  </div>
+                </form>
+
+                   
+                <form id="org" class="forms fade-up"  data-aos="fade-up" data-aos-duration="700" action="/action_page.php" style="display: none;">
+                    <div class="container">
+                      <h1>Register</h1>
+                      <p>Please fill in this marathon organizer form to create an account.</p>
+                      <hr>
+                  
+                      <label for="email"><b>Email</b></label>
+                      <input type="text" placeholder="Enter Email" name="email" id="email" required>
+                  
+                      <label for="psw"><b>Password</b></label>
+                      <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                      
+                      <label for="org"><b>Organization</b></label>
+                      <input type="text" placeholder="Enter Organization" name="org" id="" required>
+                      
+                  
+                      <label for="psw-repeat"><b>Repeat Password</b></label>
+                      <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+                      <hr>
+                      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                  
+                      <button type="submit" class="registerbtn">Register</button>
+                    </div>
+                  </form>
+                </div>
+
+ </div>
+
+    {% include 'footer.html' %}
+    <script src="{% static 'assets/js/jquery.min.js'%}"></script>
+    <script src="{% static 'assets/js/popper.min.js'%}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'assets/js/owl.carousel.js'%}"></script>
+    <script src="{% static 'assets/js/aos.js'%}"></script>
+    <script src="{% static 'assets/js/jquery.validate.js'%}"></script>
+    <script src="{% static 'assets/js/contact-form.js'%}"></script>
+    <script src="{% static 'assets/js/swiper-element-bundle.min.js'%}"></script>
+    <script src="{% static 'assets/js/custom.js'%}"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        $(window).on('load', function(){ 
+        // Preloader
+        $('.loader').fadeOut();
+        $('.loader-mask').delay(350).fadeOut('slow');
+        });
+    </script>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        var btn = $('#button');
+         
+         $(window).scroll(function() {
+           if ($(window).scrollTop() > 300) {
+           btn.addClass('show');
+         }
+          else {
+           btn.removeClass('show');
+         }
+         });
+         btn.on('click', function(e) {
+         e.preventDefault();
+         $('html, body').animate({scrollTop:0}, '300');
+       });
+    </script>
+    <script>
+        $('#owl-carouselone').owlCarousel({
+            loop: true,
+            margin: 30,
+            nav: true,
+            navText: ["<i class='fas fa-arrow-left'></i>", "<i class='fas fa-arrow-right'></i>"],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        })
+        $('#owl-carouseltwo').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                navText: ["<i class='fas fa-arrow-left'></i>", "<i class='fas fa-arrow-right'></i>"],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            })
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            var counters = $(".count");
+            var countersQuantity = counters.length;
+            var counter = [];
+
+            for (i = 0; i < countersQuantity; i++) {
+                counter[i] = parseInt(counters[i].innerHTML);
+            }
+
+            var count = function (start, value, id) {
+                var localStart = start;
+                setInterval(function () {
+                    if (localStart < value) {
+                        localStart++;
+                        counters[id].innerHTML = localStart;
+                    }
+                }, 40);
+            }
+
+            for (j = 0; j < countersQuantity; j++) {
+                count(0, counter[j], j);
+            }
+        });
+
+
+
+        $('.count').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 3300,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+
+        function toggleForms(elm){
+            var elmt = $(elm).attr('fy');
+            // console.log(elmt);
+            $('.forms').hide();
+            $(elmt).show();
+        }
+    </script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            // Optional parameters
+            direction: 'vertical',
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+    </script>
+</body>
+
+</html>

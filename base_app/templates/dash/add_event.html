@@ -1,0 +1,128 @@
+{% load static %}
+{% include 'dash/header.html' %}
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+	<div class="pcoded-wrapper">
+		<div class="pcoded-content">
+			<div class="pcoded-inner-content">
+				<div class="main-body">
+					<div class="page-wrapper">
+						<!-- [ breadcrumb ] start -->
+						<div class="page-header">
+							<div class="page-block">
+								<div class="row align-items-center">
+									<div class="col-md-12">
+										<div class="page-header-title">
+											<h5>Home</h5>
+										</div>
+										<ul class="breadcrumb">
+											<li class="breadcrumb-item"><a href="index.html"><i
+														class="feather icon-home"></i></a></li>
+											<li class="breadcrumb-item"><a href="#!">Marathon Dashboard</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- [ breadcrumb ] end -->
+						
+                        <!-- [ Main Content ] start -->
+						
+                        
+    <h1>ADD YOUR EVENT </h1>
+
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+      }
+      
+      label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+      }
+      
+      input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+      }
+      
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+      
+      .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+      
+      .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+      }
+      
+      .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      .urembo{
+        background-color: #0ab8df;
+        border: 3px solid rgb(21, 2, 2);
+        border-radius: 10px;
+      }
+      /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+      @media screen and (max-width: 600px) {
+        .col-25, .col-75, input[type=submit] {
+          width: 100%;
+          margin-top: 0;
+        }
+      }
+      </style>
+
+      <body>
+        <div class="row justify-content-center">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+      <div class="container">
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Save</button>
+        </form>
+      </div>
+      
+  
+        <a href="{% url 'event' %}" class="btn btn-secondary mt-3">Back to Event List</a>
+    </div>
+						<!-- [ Main Content ] end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- [ Main Content ] end -->
+
+{% include 'dash/footer.html' %}

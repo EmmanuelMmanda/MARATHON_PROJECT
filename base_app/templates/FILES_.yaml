@@ -1,0 +1,16 @@
+FILES:
+    >/templates[index[1..3],events,contacts]
+    -una define muonekanio na mpangilio kwa html
+CODE:
+    >/views [def majina na kureference temlate.html file zako]
+        -unaandika view flani utaitambua kwa def/ function name flani. 
+        hii function name itatambulika accross djanfo code yako
+        na hukuhuku utaweza kuunganisha na data kutoka db/model zako baadae
+    >urls
+        -ni jinsi kuregister views zako zitambulike kwenye browser/ au kwa mtumiaji
+
+APPEARANCE:
+    >kuna button na links
+    - hii sasa ni zile html zilizoandikwa kwenye /template zinasomwa na browser
+    -kama ni picha/table/slideshow/vyovyote vile
+    -so hii haitambui kabisa django yako bila wewe

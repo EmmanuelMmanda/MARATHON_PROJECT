@@ -1,0 +1,369 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/images/favicon/apple-icon-57x57.png'%}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/images/favicon/apple-icon-60x60.png'%}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/images/favicon/apple-icon-72x72.png'%}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/images/favicon/apple-icon-76x76.png'%}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/images/favicon/apple-icon-114x114.png'%}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/images/favicon/apple-icon-120x120.png'%}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/images/favicon/apple-icon-144x144.png'%}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/images/favicon/apple-icon-152x152.png'%}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/favicon/apple-icon-180x180.png'%}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'assets/images/favicon/android-icon-192x192.png'%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicon/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/images/favicon/favicon-96x96.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon/favicon-16x16.png'%}">
+    <link rel="manifest" href="{% static 'assets/images/favicon/manifest.json'%}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>HOME</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/mobile.css'%}">
+</head>
+
+<body>
+
+   <!-- header inakaa hapa -->
+   {% include 'header.html' %}
+    <!-- BANNER SECTION START -->
+    <section class="banner-main-section w-100 float-left">
+        <div class="container-fluid">
+            <div class="banner-outer-con" data-aos="fade-up" data-aos-duration="700">
+                <div id="owl-carouselone" class="owl-carousel owl-theme">
+                    <div class="item">
+                        <div class="banner-inner-section">
+                            <div class="banner-left-section">
+                                <h1>BIGGEST MARATHON EVENTS IN <span class="d-inline-block">2024</span></h1>
+                                <span>20 May, 2024</span>
+                                <div class="generic-btn">
+                                    <!-- NIMEWEKA EMOJ KUTOKA -->
+                                    <a href="{% url 'register' %}">JOIN US  <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="banner-left-images d-flex">
+                                    <figure class="mb-0">
+                                        <img src="{% static 'mokea/BR 10.jpg'%}" alt="banner-
+                                        
+                                        left-img1">
+                                    </figure>
+                                    <figure class="mb-0">
+                                        <img src="{% static 'mokea/ABSA.jpeg'%}" alt="banner-left-img2">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="banner-right-section">
+                                <figure>
+                                    <img src="{% static 'mokea/CRDB.jpg'%}" alt="banner-right-img">
+                                </figure>
+                                <span>CRDB marathon, Dar es salaam</span>
+                                <div class="social-links d-flex">
+                                    <a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://twitter.com/i/flow/login"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/login "><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="banner-inner-section">
+                            <div class="banner-left-section">
+                                <h1>BIGGEST MARATHON EVENT<span class="d-inline-block">2024</span></h1>
+                                <span>21 SEPTEMBER, 2024</span>
+                                <div class="generic-btn">
+                                    <a href="{% url 'register' %}">REGISTER FOR FREE <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="banner-left-images d-flex">
+                                    <figure class="mb-0">
+                                        <img src="{% static 'assets/images/banner-left-img3.jpg'%}" alt="banner-left-img1">
+                                    </figure>
+                                    <figure class="mb-0">
+                                        <img src="{% static 'mokea/mkurugenzi.jpeg'%}" alt="banner-left-img2">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="banner-right-section">
+                                <figure>
+                                    <img src="{% static 'mokea/mkaka.jpeg'%}" alt="banner-right-img2">
+                                </figure>
+                                <span>Dar es salaam <span>
+                                <div class="social-links d-flex">
+                                    <a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://twitter.com/i/flow/login"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="banner-inner-section">
+                            <div class="banner-left-section">
+                                <h1>BIGGEST MARATHON EVENT <span class="d-inline-block">2024</span></h1>
+                                <span>21 SEPTEMBER, 2024</span>
+                                <div class="generic-btn">
+                                    <a href="{% url 'register' %
+                                }">REGISTER FOR FREE <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="banner-left-images d-flex">
+                                    <figure class="mb-0">
+                                        <img src="{% static 'assets/images/banner-left-img3.jpg'%}" alt="banner-left-img3">
+                                    </figure>
+                                    <figure class="mb-0">
+                                        <img src="{% static 'assets/images/banner-left-img4.jpg'%}" alt="banner-left-img2">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="banner-right-section">
+                                <figure>
+                                    <img src="{% static 'mokea/africans.webp'%}" alt="banner-right-img">
+                                </figure>
+                                <span>NBC marathon</span>
+                                <div class="social-links d-flex">
+                                    <a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://twitter.com/i/flow/login"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- BANNER SECTION END -->
+    <!-- SPONSERS SECTION START -->
+    <div class="sponsers-main-section w-100 float-left">
+        <div class="container">
+            <div class="sponsers-companies">
+                <ul class="list-unstyled mb-0" data-aos="fade-up" data-aos-duration="700">
+                    <li>
+                        <figure class="mb-0">
+                            <img src="{% static 'assets/images/sponsers-logo1.png'%}" alt="sponsers-logo1">
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="mb-0">
+                            <img src="{% static 'assets/images/sponsers-logo2.png'%}" alt="sponsers-logo2">
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="mb-0">
+                            <img src="{% static 'assets/images/sponsers-logo3.png'%}" alt="sponsers-logo3">
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="mb-0">
+                            <img src="{% static 'assets/images/sponsers-logo4.png'%}" alt="sponsers-logo4">
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="mb-0">
+                            <img src="{% static 'assets/images/sponsers-logo5.png'%}" alt="sponsers-logo5">
+                        </figure>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- SPONSERS SECTION END -->
+    <!-- REGISTRATION SECTION START -->
+    <section class="registration-main-section w-100 float-left light-bg">
+        <div class="container">
+            <div class="registration-inner-con">
+                <div class="generic-title mb-0">
+                    <span class="small-text" data-aos="fade-up" data-aos-duration="700">JOIN THE MARATHON</span>
+                    <h2 data-aos="fade-up" data-aos-duration="700">Marathon events</h2>
+                    <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
+                        <a href="{% url 'register' %}">REGISTER FOR FREE <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- REGISTRATION SECTION END -->
+    
+    {% include 'footer.html' %}
+    <!-- FOOTER SECTION END -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js'%}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'assets/js/owl.carousel.js'%}"></script>
+    <script src="{% static 'assets/js/swiper-bundle.min.js'%}"></script>
+    <script src="{% static 'assets/js/aos.js'%}"></script>
+    <script src="{% static 'assets/js/jquery.validate.js'%}"></script>
+    <script src="{% static 'assets/js/custom.js'%}"></script>
+    <script>
+        $(window).on('load', function(){ 
+        // Preloader
+        $('.loader').fadeOut();
+        $('.loader-mask').delay(350).fadeOut('slow');
+        });
+    </script>
+    <script>
+        $('.data').hide()
+        jQuery('button.showBtn1').on('click', function () {
+            jQuery('.data1').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn2').on('click', function () {
+            jQuery('.data2').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn3').on('click', function () {
+            jQuery('.data3').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn4').on('click', function () {
+            jQuery('.data4').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn5').on('click', function () {
+            jQuery('.data5').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn6').on('click', function () {
+            jQuery('.data6').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn7').on('click', function () {
+            jQuery('.data7').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn8').on('click', function () {
+            jQuery('.data8').toggle();
+        })
+    </script>
+    <script>
+        $('#owl-carouselone').owlCarousel({
+            loop: true,
+            margin: 30,
+            nav: true,
+            navText: ["<i class='fas fa-arrow-left'></i>", "<i class='fas fa-arrow-right'></i>"],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        })
+        $('#owl-carouseltwo').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            navText: ["<i class='fas fa-arrow-left'></i>", "<i class='fas fa-arrow-right'></i>"],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        })
+    </script>
+    <script>
+        AOS.init();
+        function lightbox_open() {
+            var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+            //   window.scrollTo(0, 0);
+            document.getElementById('light').style.display = 'block';
+            document.getElementById('fade1').style.display = 'block';
+            lightBoxVideo.play();
+        }
+
+        function lightbox_close() {
+            var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+            document.getElementById('light').style.display = 'none';
+            document.getElementById('fade1').style.display = 'none';
+            lightBoxVideo.pause();
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            var counters = $(".count");
+            var countersQuantity = counters.length;
+            var counter = [];
+
+            for (i = 0; i < countersQuantity; i++) {
+                counter[i] = parseInt(counters[i].innerHTML);
+            }
+
+            var count = function (start, value, id) {
+                var localStart = start;
+                setInterval(function () {
+                    if (localStart < value) {
+                        localStart++;
+                        counters[id].innerHTML = localStart;
+                    }
+                }, 40);
+            }
+
+            for (j = 0; j < countersQuantity; j++) {
+                count(0, counter[j], j);
+            }
+        });
+
+
+
+        $('.count').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 3300,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+    </script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "cards",
+            grabCursor: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+    <script>
+        var btn = $('#button');
+         
+         $(window).scroll(function() {
+           if ($(window).scrollTop() > 300) {
+           btn.addClass('show');
+         }
+          else {
+           btn.removeClass('show');
+         }
+         });
+         btn.on('click', function(e) {
+         e.preventDefault();
+         $('html, body').animate({scrollTop:0}, '300');
+       });
+    </script>
+</body>
+
+</html>

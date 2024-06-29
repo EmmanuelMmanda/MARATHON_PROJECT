@@ -1,0 +1,425 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/images/favicon/apple-icon-57x57.png'%}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/images/favicon/apple-icon-60x60.png'%}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/images/favicon/apple-icon-72x72.png'%}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/images/favicon/apple-icon-76x76.png'%}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/images/favicon/apple-icon-114x114.png'%}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/images/favicon/apple-icon-120x120.png'%}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/images/favicon/apple-icon-144x144.png'%}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/images/favicon/apple-icon-152x152.png'%}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/favicon/apple-icon-180x180.png'%}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'assets/images/favicon/android-icon-192x192.png'%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicon/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/images/favicon/favicon-96x96.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon/favicon-16x16.png'%}">
+    <link rel="manifest" href="{% static 'assets/images/favicon/manifest.json'%}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>EVENT</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/mobile.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css'%}">
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <!-- HEADER START-->
+    
+    <!-- HEADER END -->
+    <!-- BANNER SECTION START -->
+    <section class="sub-banner-main-section event-banner-section w-100 float-left">
+        <div class="container">
+            <div class="sub-banner-inner-con">
+                <h1 data-aos="fade-up" data-aos-duration="700">MARATHON EVENTS</h1>
+                <p data-aos="fade-up" data-aos-duration="700">Inspiring people about marathon events Around the World, <br> and Party Together After the Event!</p>
+                <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-duration="700">
+                    <ol class="breadcrumb d-inline-block mb-0">
+                        <li class="breadcrumb-item d-inline-block"><a href="index.html">HOME</a></li>
+                        <li class="breadcrumb-item active d-inline-block" aria-current="page">EVENTS</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
+   <!-- BANNER SECTION END -->
+
+   <!-- event.html -->
+<div class="container">
+    <div class="row">
+        {% for event in events %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ event.title }}</h5>
+                    <p class="card-text">{{ event.description }}</p>
+                    <p class="card-text"><small class="text-muted">Start Time: {{ event.start_time }}</small></p>
+                    <p class="card-text"><small class="text-muted">Location: {{ event.location }}</small></p>
+                    <p class="card-text"><small class="text-muted">Ticket Price: <strong>{{ event.price }}</strong></small></p>
+                    <button type="button" class="btn btn-success buy-ticket-button" 
+                            data-event-id="{{ event.id }}" 
+                            data-event-myid="{{ current_user}}" 
+                            data-event-title="{{ event.title }}" 
+                            data-event-price="{{ event.price }}">Buy Ticket</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="paymentModalLabel">Choose Payment Method</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn btn-primary" id="payMobileMoney" data-userid="{{ current_user }}">Pay with Mobile Money</button>
+        {% comment %} <button type="button" class="btn btn-secondary" id="payCash">Pay with Cash</button> {% endcomment %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Include JavaScript and jQuery libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let selectedEvent = {};
+
+    const buttons = document.querySelectorAll(".buy-ticket-button");
+    buttons.forEach(button => {
+        button.addEventListener("click", function() {
+            selectedEvent.id = this.getAttribute("data-event-id");
+            selectedEvent.title = this.getAttribute("data-event-title");
+            selectedEvent.myid = this.getAttribute("data-event-myid");
+            selectedEvent.price = parseFloat(this.getAttribute("data-event-price"));
+
+            $('#paymentModal').modal('show');
+        });
+    });
+
+    document.getElementById('payMobileMoney').addEventListener('click', function() {
+        $('#paymentModal').modal('hide');
+        makePayment(selectedEvent.id, selectedEvent.title, selectedEvent.price,selectedEvent.myid);
+    });
+
+    document.getElementById('payCash').addEventListener('click', function() {
+        $('#paymentModal').modal('hide');
+
+        saveCashPayment(selectedEvent.id,selectedEvent.myid );
+    });
+});
+
+function makePayment(eventId, eventTitle, eventPrice,myid) {
+    const userid = myid;
+    const txRef = generateTxRef(eventId);
+    console.log('Initializing payment with tx_ref:', txRef);
+
+    FlutterwaveCheckout({
+        public_key: "FLWPUBK_TEST-6430005ca51393c33fbee8cd5cdbd758-X",
+        tx_ref: txRef,
+        amount: eventPrice,
+        currency: "TZS",
+        payment_options: "card, banktransfer, ussd",
+        meta: {
+            source: "docs-inline-test",
+            consumer_mac: "92a3-912ba-1192a",
+        },
+        customer: {
+            email: "mocare@gmail.com",  // Dummy email
+            phone_number: "08100000000",  // Dummy phone number
+            name: "Mary MoCare",  // Dummy name
+        },
+        customizations: {
+            title: "Event Ticket",
+            description: `Payment for ${eventTitle}`,
+            logo: "https://checkout.flutterwave.com/assets/img/rave-logo.png",
+        },
+        callback: function (data) {
+            if (data.status === 'successful') {
+                
+                saveCashPayment(eventId, myid);
+
+                setTimeout(function(){
+                    window.location.reload();
+                }, 3000);
+                //alert("Congratulations, ticket purchased successfully!");
+            } else {
+                alert("Payment failed. Please try again.");
+            }
+            console.log("Payment callback:", data);
+        },
+        onclose: function() {
+            alert("Payment cancelled!");
+            console.log("Payment cancelled!");
+        },
+        onload: function() {
+            console.log("Flutterwave Checkout loaded");
+        }
+    });
+}
+
+function saveCashPayment(eventId, participant) {
+    const payload = {
+        event_id: eventId,
+        participant_id: participant, 
+        purchase_time: new Date().toISOString()
+    };
+
+    fetch('/save_cash_payment/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}' // Ensure you pass the CSRF token
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+           // alert("Congratulations, ticket purchased successfully with cash!");
+        } else {
+         //   alert("Failed to save cash payment. Please try again.");
+        }
+        console.log("Cash payment saved:", data);
+    })
+    .catch(error => {
+        console.error("Error saving cash payment:", error);
+    });
+}
+
+function generateTxRef(eventId) {
+    const randomString = Math.random().toString(36).substr(2, 8).toUpperCase();
+    return `txref-${eventId}-${randomString}`;
+}
+</script>
+
+    <!-- SPONSERS SECTION START -->
+    <div class="sponsers-main-section about-sponsers w-100 float-left">
+        <div class="container">
+            <div class="sponsers-companies">
+                <ul class="list-unstyled mb-0" data-aos="fade-up" data-aos-duration="700">
+                    <li>
+                        <figure class="mb-0">
+                            <img src="{% static 'assets/images/sponsers-logo1.png'%}" alt="sponsers-logo1">
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="mb-0">
+                            <img src="{% static 'assets/images/sponsers-logo2.png'%}" alt="sponsers-logo2">
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="mb-0">
+                            <img src="{% static 'assets/images/sponsers-logo3.png'%}" alt="sponsers-logo3">
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="mb-0">
+                            <img src="{% static 'assets/images/sponsers-logo4.png'%}" alt="sponsers-logo4">
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="mb-0">
+                            <img src="{% static 'assets/images/sponsers-logo5.png'%}" alt="sponsers-logo5">
+                        </figure>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- SPONSERS SECTION END -->
+    <!-- REGISTRATION SECTION START -->
+  
+    <!-- REGISTRATION SECTION END -->
+    <!-- FOOTER SECTION START -->
+    {% include 'footer.html' %}
+    <script src="{% static 'assets/js/jquery.min.js'%}"></script>
+    <script src="{% static 'assets/js/popper.min.js'%}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'assets/js/owl.carousel.js'%}"></script>
+    <script src="{% static 'assets/js/aos.js'%}"></script>
+    <script src="{% static 'assets/js/jquery.validate.js'%}"></script>
+    <script src="{% static 'assets/js/swiper-element-bundle.min.js'%}"></script>
+    <script src="{% static 'assets/js/custom.js'%}"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        $(window).on('load', function(){ 
+        // Preloader
+        $('.loader').fadeOut();
+        $('.loader-mask').delay(350).fadeOut('slow');
+        });
+    </script>
+    <script>
+        var btn = $('#button');
+         
+         $(window).scroll(function() {
+           if ($(window).scrollTop() > 300) {
+           btn.addClass('show');
+         }
+          else {
+           btn.removeClass('show');
+         }
+         });
+         btn.on('click', function(e) {
+         e.preventDefault();
+         $('html, body').animate({scrollTop:0}, '300');
+       });
+    </script>
+    <script>
+        $('.data').hide()
+        jQuery('button.showBtn1').on('click', function () {
+            jQuery('.data1').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn2').on('click', function () {
+            jQuery('.data2').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn3').on('click', function () {
+            jQuery('.data3').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn4').on('click', function () {
+            jQuery('.data4').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn5').on('click', function () {
+            jQuery('.data5').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn6').on('click', function () {
+            jQuery('.data6').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn7').on('click', function () {
+            jQuery('.data7').toggle();
+        })
+        $('.data').hide()
+        jQuery('button.showBtn8').on('click', function () {
+            jQuery('.data8').toggle();
+        })
+    </script>
+    <script>
+        $('#owl-carouselone').owlCarousel({
+            loop: true,
+            margin: 30,
+            nav: true,
+            navText: ["<i class='fas fa-arrow-left'></i>", "<i class='fas fa-arrow-right'></i>"],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        })
+        $('#owl-carouseltwo').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                navText: ["<i class='fas fa-arrow-left'></i>", "<i class='fas fa-arrow-right'></i>"],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            })
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            var counters = $(".count");
+            var countersQuantity = counters.length;
+            var counter = [];
+
+            for (i = 0; i < countersQuantity; i++) {
+                counter[i] = parseInt(counters[i].innerHTML);
+            }
+
+            var count = function (start, value, id) {
+                var localStart = start;
+                setInterval(function () {
+                    if (localStart < value) {
+                        localStart++;
+                        counters[id].innerHTML = localStart;
+                    }
+                }, 40);
+            }
+
+            for (j = 0; j < countersQuantity; j++) {
+                count(0, counter[j], j);
+            }
+        });
+
+
+
+        $('.count').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 3300,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+    </script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            // Optional parameters
+            direction: 'vertical',
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+    </script>
+</body>
+
+</html>

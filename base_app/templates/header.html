@@ -1,0 +1,60 @@
+{%load static %}
+<!-- HEADER START-->
+ <div class="header-main-con w-100 float-left">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light p-0">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <figure class="mb-0">
+                    <!-- <img src="{% static 'assets/images/logo.png'%}" alt="logo"> -->
+                </figure>
+            </a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link p-0" href="{% url 'index'%}">HOME</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link p-0" href="{% url 'logout'%}">LOGOUT</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link p-0" href="{% url 'login'%}">LOGIN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-0" href="{% url 'register' %}">REGISTER</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link p-0" href="{% url 'event'%}">EVENTS</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link p-0" href="{% url 'contact' %}">CONTACT</a>
+                    </li>
+                </ul>
+                <div class="header-contact d-flex align-items-center">
+                    <div class="lets-talk-btn">
+                        <a href="{% url 'contact' %}">LET'S TALK <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-btns d-flex">
+                <div class="shopping-cart">
+                    <a href="{% url 'event' %}"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+                <div class="search-btn">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- HEADER END -->
