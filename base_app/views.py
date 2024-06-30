@@ -119,7 +119,7 @@ def register(request):
             user.username = user.email  # Ensure username is set to email
             user.save()
             login(request, user)
-            return redirect('events')
+            return redirect('event')
     else:
         form = UserRegistrationForm()
     return render(request, 'register.html', {'form': form})
