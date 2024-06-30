@@ -135,9 +135,10 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 if user.user_type == 'Event Organizer':
-                    return redirect('mypage')  # Redirect to the contact page for event organizers
+                    return redirect('/admin')  # Redirect to the Django admin login
                 else:
-                    return redirect('event')  # Redirect to the index page for participants
+                    return redirect('/login')  # 
+
 
         # Display an error message for invalid credentials
         messages.error(request, 'Umekosea email au password. Tafadhali jaribu tena au jisajili kwanza!', extra_tags='error-red')

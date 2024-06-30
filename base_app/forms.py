@@ -1,10 +1,14 @@
+from .models import User
+from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from .models import Event, Ticket
+
 
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ['title', 'description', 'start_time', 'end_time', 'location', 'price']
+        fields = ['title', 'description', 'start_time',
+                  'end_time', 'location', 'price']
         widgets = {
             'title': forms.TextInput(attrs={
                 'class': 'form-control',
@@ -30,16 +34,21 @@ class EventForm(forms.ModelForm):
             }),
             'price': forms.NumberInput(attrs={'class': 'form-control'}),
         }
-
+    
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        if self.user and not self.user.is_superuser:
+            self.fields['organizer'].initial = self.user
+            self.fields['organizer'].queryset = User.objects.filter(id=self.user.id)
+        else:
+            self.fields['organizer'].queryset = User.objects.all()
 
 class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
         fields = ['event']
 
-from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from .models import User
 
 class UserRegistrationForm(UserCreationForm):
     USER_TYPE_CHOICES = [
@@ -55,4 +64,5 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['first_name','last_name','email','phone', 'username', 'password1', 'password2','user_type']
+        fields = ['first_name', 'last_name', 'email',
+                  'phone', 'password1', 'password2', 'user_type']
