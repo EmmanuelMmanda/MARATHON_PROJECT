@@ -119,7 +119,12 @@ def register(request):
             user.username = user.email  # Ensure username is set to email
             user.save()
             login(request, user)
-            return redirect('event')
+            if user is not None:
+                login(request, user)
+                if user.user_type == 'Event Organizer':
+                    return redirect('/admin')  # Redirect to the Django admin login
+                else:
+                    return redirect('/event')  
     else:
         form = UserRegistrationForm()
     return render(request, 'register.html', {'form': form})

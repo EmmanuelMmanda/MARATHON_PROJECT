@@ -1,5 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser,Group
+from django.contrib.auth.models import AbstractUser, Group
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from .mail import send_notification
 
 
 class User(AbstractUser):
@@ -45,6 +48,13 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+
+@receiver(post_save, sender=Event)
+def event_saved_handler(sender, instance, created, **kwargs):
+    if created or instance.pk:
+        email = instance.organizer.email
+        send_notification(email, instance)
 
 
 class Ticket(models.Model):
