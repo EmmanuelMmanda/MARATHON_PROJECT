@@ -55,6 +55,12 @@ def event_saved_handler(sender, instance, created, **kwargs):
     if created or instance.pk:
         email = instance.organizer.email
         send_notification(email, instance)
+        
+        participants = User.objects.filter(user_type='Participant')
+
+        # Send notification to each participant
+        for participant in participants:
+            send_notification(participant.email, instance)
 
 
 class Ticket(models.Model):
